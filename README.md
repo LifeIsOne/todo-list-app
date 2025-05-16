@@ -1,3 +1,38 @@
+## 1. 환경
+-  `Laravel` 10
+
+### 2. TDOO 애플리케이션 요구사항
+1) 기본 요구사항:
+- 페이지는 총 3페이지(홈, 추가/수정, 삭제)로 구성합니다.
+- AppBar와 ListItem 컴포넌트는 각각 1개씩만 생성합니다.
+- TODO 항목에는 고유 ID, 텍스트, 완료 여부가 포함됩니다.
+
+2) 추가 요구사항:
+- 항목을 추가할 때 입력값의 유효성 검사를 수행합니다.
+- 항목을 클릭하면 상세보기 페이지로 이동합니다.
+- 완료된 항목과 미완료 항목을 필터링할 수 있는 기능을 추가합니다.
+
+### 3. 고유 ID 생성 및 관리
+- 고유 ID를 생성하고 관리하는 방법을 고민하십시오.
+- 각 TODO 항목은 고유한 ID를 가져야 합니다.
+
+### 4. 유효성 검사
+- TODO 항목을 추가할 때 입력값이 비어 있지 않은지 확인하십시오.
+- 이미 존재하는 TODO 항목이 추가되지 않도록 검사하십시오.
+
+### 5. 조건부 렌더링
+- TODO 항목이 완료되었는지 여부에 따라 다른 스타일을 적용하십시오.
+
+### 6. 필터링 기능
+- 완료된 항목과 미완료 항목을 필터링할 수 있는 버튼을 추가하십시오.
+
+### 7. 실행 가이드
+- Readme에 환경 세팅 및 프로젝트 실행 가이드를 추가하십시오.
+
+### 8. 공유 방법
+- Git Repository 주소
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
