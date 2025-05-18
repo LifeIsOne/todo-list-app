@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     public function home() {
-        $todos = Todo::all(); // Todos 가져오기
-        return view('home');
+        $todos = Todo::all();
+        return view('home', ['todos' => $todos]);
     }
 }

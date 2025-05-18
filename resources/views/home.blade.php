@@ -39,11 +39,22 @@
         </div>
     </nav>
     {{--  카드  --}}
-    <div class="card my-3 container">
-        <div class="card-body">
-            <h4 class="card-title mb-3">title</h4>
-        </div>
-    </div>
+{{--    <div class="card my-3 container">--}}
+{{--        <div class="card-body">--}}
+{{--            <h4 class="card-title mb-3">title</h4>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+    {{--  할 일 목록  --}}
+    <ul class="list-group container my-3">
+        @foreach($todos as $todo)
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+{{--            <a href="/board/detail/{{$todo->id}}">{{$todo->title}}</a>--}}
+            {{ $todo -> content }}
+{{--            <span class="badge bg-primary rounded-pill">{{$todo->completed ? }}</span>--}}
+        </li>
+        @endforeach
+    </ul>
+
 
     {{--  페이징  --}}
     <ul class="pagination d-flex justify-content-center">
