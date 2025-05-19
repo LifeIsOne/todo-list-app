@@ -13,9 +13,7 @@ class TodoController extends Controller
 
         return view('home', ['todos' => $todos]);
     }
-    public function add() {
-        return view('todo.add');
-    }
+
     // 추가, 할 일 추가
     public function create() {
         return view('todo.edit');
@@ -23,9 +21,9 @@ class TodoController extends Controller
 
     // 저장 요청
     public function store(Request $request) {
-        // 유효성 검사 `text` 필수
+        // 유효성 검사 `text` 필수, 50자 내, 유일
         $request->validate([
-            'text' => 'required',
+            'text' => 'required|string|max:50|unique:todos,text',
         ]);
         // DB에 저장
         Todo::create([
