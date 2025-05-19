@@ -5,7 +5,6 @@ use App\Http\Controllers\TodoController;
 
 // 메인 페이지
 Route::get  ('/', [TodoController::class, 'home']);
-Route::get  ('/add', [TodoController::class, 'add']);
 Route::post ('/todo/store',     [TodoController::class, 'store']);
 
 Route::get  ('/todo/create',    [TodoController::class, 'create']);

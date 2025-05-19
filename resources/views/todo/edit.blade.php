@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
             <h2>{{ isset($todo) ? '할 일 수정' : '할 일 추가' }}</h2>
             <button type="submit" class="btn btn-success">
-                {{ isset($todo) ? '수정' : '추가하기' }}
+                {{ isset($todo) ? '수정하기' : '추가하기' }}
             </button>
         </div>
         @csrf
