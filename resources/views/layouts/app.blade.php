@@ -9,9 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-@include('components.appbar') {{-- AppBar --}}
+@include('components.appbar')
 <div class="container mt-4">
-    @yield('content') {{-- 페이지별 내용 --}}
+    @yield('text') {{-- 할 일 --}}
 </div>
 {{-- 푸터 --}}
 <footer class="bg-light p-5 text-center">
