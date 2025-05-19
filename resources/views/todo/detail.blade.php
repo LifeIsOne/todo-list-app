@@ -3,6 +3,7 @@
 @section('title', '상세보기 페이지')
 
 @section('text')
+    {{--  제목, 수정, 삭제  --}}
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h2>할 일 상세보기</h2>
 
@@ -16,5 +17,11 @@
             </form>
         </div>
     </div>
-    <p>{{ $todo->text }}</p>
+
+    {{--  내용  --}}
+    <p class="flex-grow-1">{{ $todo->text }}</p>
+    <div class="text-end">
+        <p class="small mb-0">생성일 : {{ $todo->created_at }}</p>
+        <p class="small ">수정일 : {{ $todo->updated_at }}</p>
+    </div>
 @endsection
