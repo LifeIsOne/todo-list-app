@@ -23,15 +23,16 @@ class TodoController extends Controller
 
     // 저장 요청
     public function store(Request $request) {
+        // 유효성 검사 `text` 필수
         $request->validate([
             'text' => 'required',
         ]);
-
+        // DB에 저장
         Todo::create([
             'text' => $request->text,
         ]);
-
-        return redirect('/');   // 리다이렉션
+        // 리다이렉션
+        return redirect('/');
     }
 
     // 수정, 할 일 수정
