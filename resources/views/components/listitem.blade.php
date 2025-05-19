@@ -1,10 +1,5 @@
-<li class="list-group-item d-flex justify-content-between">
-    no.{{ $todo->id }} {{ $todo->text }}
-    <div>
-        <a href="/todo/{{ $todo->id }}/edit" class="btn btn-sm btn-warning">수정</a>
-        <form method="POST" action="/todo/{{ $todo->id }}/delete" style="display:inline">
-            @csrf @method('DELETE')
-            <button class="btn btn-sm btn-danger">삭제</button>
-        </form>
-    </div>
+<li class="{{ $todo->completed ? 'text-success line-through' : '' }} list-group-item">
+    <a href="/todo/{{ $todo->id }}/detail" class="text-decoration-none text-dark d-block">
+        no.{{ $todo->id }} {{ $todo->text }}
+    </a>
 </li>

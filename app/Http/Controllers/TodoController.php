@@ -14,6 +14,12 @@ class TodoController extends Controller
         return view('home', ['todos' => $todos]);
     }
 
+    // 상세보기 페이지
+    public function detail($id) {
+        $todo = Todo::find($id);
+        return view('todo.detail', ['todo' => $todo]);
+    }
+
     // 추가, 할 일 추가
     public function create() {
         return view('todo.edit');
