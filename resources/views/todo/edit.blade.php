@@ -18,6 +18,12 @@
             <input type="text" class="form-control" id="text" name="text"
                    value="{{ $todo->text ?? '' }}" required>
         </div>
+        {{-- 에러 메세지 출력 --}}
+        @error('text')
+        <div class="invalid-feedback d-block">
+            중복된 내용인지 확인해 주세요!
+        </div>
+        @enderror
     </form>
 
 @endsection
