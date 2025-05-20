@@ -7,10 +7,18 @@
         <h2>할 일 목록</h2>
         <a href="/todo/create" class="btn btn-primary mb-3">할 일 추가</a>
     </div>
-    <ul class="list-group mb-5">
+
+    <table class="table">
+        <tr>
+            <th>완료 여부</th>
+            <th>ID</th>
+            <th>할 일</th>
+            <th>생성시간</th>
+        </tr>
+
         @foreach($todos as $todo)
             @include('components.listitem', ['todo' => $todo])
         @endforeach
-    </ul>
-@endsection
+    </table>
 
+@endsection

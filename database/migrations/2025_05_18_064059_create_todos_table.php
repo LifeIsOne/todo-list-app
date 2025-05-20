@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('todos', function (Blueprint $table) {
-            $table->id();
-            $table->string('text');
-            $table->boolean('completed')->default(false);
+            $table->id();   // 고유 id
+            $table->string('text'); // 텍스트, 할 일
+            $table->boolean('completed')->default(false);   // 완료 여부
             $table->timestamps();
 //            $table->timestamp('created_at')->nullable();
 //            $table->timestamp('updated_at')->nullable();
