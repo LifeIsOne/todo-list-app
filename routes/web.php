@@ -18,4 +18,4 @@ Route::put  ('/todo/{id}/update', [TodoController::class, 'update']);
 // 삭제
 Route::delete('/todo/{id}/delete', [TodoController::class, 'delete']);
 // 완료
-ROute::patch('/todo/{id}/complete', [TodoController::class, 'complete']);
+Route::patch('/todo/{id}/complete', [TodoController::class, 'complete']);

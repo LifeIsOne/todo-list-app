@@ -8,10 +8,18 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     // 홈, 할 일 목록
-    public function home() {
-        $todos = Todo::all();
+//    public function home() {
+//        $todos = Todo::all();
+//
+//        return view('home', ['todos' => $todos]);
+//    }
+    public function home(Request $request) {
+        $filter = $request->query('filter');
+        $todos = Todo::when($filter === 'completed', function ($query) {$query->where('completed', true);})
+                     ->when($filter === 'incomplete', function ($query) {$query->where('completed', false);})
+                     ->get();
 
-        return view('home', ['todos' => $todos]);
+        return view('home', ['todos' => $todos, 'filter' => $filter]);
     }
 
     // 상세보기 페이지
