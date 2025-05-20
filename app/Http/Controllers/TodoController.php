@@ -65,4 +65,12 @@ class TodoController extends Controller
 
         return redirect('/');
     }
+
+    public function complete($id){
+        $todo = Todo::find($id);
+        $todo->completed = !$todo->completed;
+        $todo->save();
+
+        return redirect('/');
+    }
 }
