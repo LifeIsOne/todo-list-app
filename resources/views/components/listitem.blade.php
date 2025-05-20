@@ -1,5 +1,14 @@
-<tr class="{{ $todo->completed ? 'text-success text-decoration-line-through' : '' }}">
-    <td>{{ $todo->completed ? '✅' : '☑️🟩' }}</td>
+<tr class="{{ $todo->completed ? 'table-success' : '' }}">
+    <td>
+        <form action="{{'/todo/' . $todo->id . '/complete'}}" method="POST">
+            @csrf
+            @method('PATCH')
+            <button class="btn btn-sm">
+                {{ $todo->completed ? '✅' : '☑️' }}
+            </button>
+        </form>
+    </td>
+
 
     <td>{{ $todo->id }}</td>
     <td>

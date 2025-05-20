@@ -15,8 +15,8 @@
             @method('PUT')
         @endif
         <div class="mb-3 d-flex justify-content-center">
-            <input type="text" class="form-control" style="width: 300px;" id="text" name="text"
-                   value="{{ old('text', $todo->text ?? '') }}" required>
+            <input type="text" class="form-control" id="text" name="text"
+                   value="{{ $todo->text ?? '' }}" required>
         </div>
     </form>
 
