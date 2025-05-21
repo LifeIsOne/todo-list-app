@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\TodoApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users', function () {
-    return 'Hello World';
-});
-
-Route::get('/todos',[todoController::class,'index']);
+Route::get('/todos', [TodoApiController::class, 'index']);
+Route::post('/todos', [TodoApiController::class, 'store']);
+Route::patch('/todos/{id}/toggle', [TodoApiController::class, 'toggle']);
+Route::delete('/todos/{id}', [TodoApiController::class, 'destroy']);
