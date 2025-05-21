@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-//    // 홈, 할 일 목록
-//    public function home() {
-//        $todos = Todo::all();
-//
-//        return view('home', ['todos' => $todos]);
-//    }
+    public function index()
+    {
+        $todos = Todo::all();
+        return response()->json($todos, 200);
+    }
+
 
     public function app(Request $request)
     {

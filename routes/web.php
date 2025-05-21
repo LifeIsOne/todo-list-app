@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 
-//// [Blade]
-//// 홈 화면
-//Route::get  ('/', [TodoController::class, 'home']);
+// 홈 화면
+Route::get ('/', function () {
+    return view('app');
+});
+
+Route::view('/todos', 'app');
+
 //// 상세보기 화면
 //Route::get('/todo/{id}/detail', [TodoController::class, 'detail']);
 //// 추가화면
@@ -20,11 +24,3 @@ use App\Http\Controllers\TodoController;
 //Route::delete('/todo/{id}/delete', [TodoController::class, 'delete']);
 //// 완료
 //Route::patch('/todo/{id}/complete', [TodoController::class, 'complete']);
-
-// [Vue]
-Route::patch('/todo/{id}/complete', [TodoController::class, 'complete']);
-
-Route::get('/{any}', function () {
-    return view('app');
-})->where('any', '.*');
-

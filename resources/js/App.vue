@@ -18,7 +18,10 @@
             </thead>
 
             <tbody>
-            <tr v-bind:class="todo.completed ? 'table-success' : '' ">
+            <tr v-for = "todo in todos"
+                :key = "todo.id"
+                :class="todo.completed ? 'table-success' : '' "
+            >
                 <td>
                     <form @submit.prevent="completeToggle(todo.id)">
                         <button class="btn btn-sm">
@@ -47,6 +50,21 @@
 
 <script setup>
 import Layout from "@/layouts/Layout.vue";
+import {onMounted, ref} from "vue";
+import axios from "axios";
+
+const todos = ref([]);
+
+const loadTodos = () => {
+    axios.get('/api/todos')
+        .then(response => {
+            todos.value = response.data;
+        })
+}
+
+onMounted(() => {
+    loadTodos();
+})
 
 </script>
 
