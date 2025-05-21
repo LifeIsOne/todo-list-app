@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 
 // 홈 화면
-Route::get ('/', function () {
+Route::get('/', function () {
     return view('app');
 });
 // 목록 조회
