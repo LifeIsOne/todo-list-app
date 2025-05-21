@@ -10,7 +10,7 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
-        return response()->json($todos, 200);
+        return response()->json($todos);
     }
 
 
@@ -47,16 +47,16 @@ class TodoController extends Controller
     // 저장 요청
     public function store(Request $request)
     {
-        // 유효성 검사 `text` 필수, 50자 내, 유일
         $request->validate([
             'text' => 'required|string|max:50|unique:todos,text',
         ]);
-        // DB에 저장
-        Todo::create([
+
+        $todo = Todo::create([
             'text' => $request->text,
+            'completed' => false
         ]);
-        // 리다이렉션
-        return redirect('/');
+
+        return response()->json($todo);
     }
 
     // 수정, 할 일 수정
@@ -83,18 +83,18 @@ class TodoController extends Controller
 
     public function delete($id)
     {
-        $todo = Todo::find($id);
+        $todo = Todo::findOrFail($id);
         $todo->delete();
 
-        return redirect('/');
+        return response()->json(null);
     }
 
     public function complete($id)
     {
-        $todo = Todo::find($id);
+        $todo = Todo::findOrFail($id);
         $todo->completed = !$todo->completed;
         $todo->save();
 
-        return redirect('/');
+        return response()->json($todo);
     }
 }
