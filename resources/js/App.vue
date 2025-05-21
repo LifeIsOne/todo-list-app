@@ -18,11 +18,26 @@
             </thead>
 
             <tbody>
-            <ListItem
-                v-for="todo in filter"
-                :key="todo.id"
-                :todo="todo"
-            />
+            <tr v-bind:class="todo.completed ? 'table-success' : '' ">
+                <td>
+                    <form @submit.prevent="completeToggle(todo.id)">
+                        <button class="btn btn-sm">
+                            {{ todo.completed ? '✅' : '☑️' }}
+                        </button>
+                    </form>
+                </td>
+
+                <td>{{ todo.id }}</td>
+
+                <td>
+                    <router-link :to="`/todo/${todo.id}/detail`" class="text-decoration-none text-dark d-block">
+                        {{ todo.text }}
+                    </router-link>
+                </td>
+
+                <td>{{ todo.created_at }}</td>
+
+            </tr>
             </tbody>
 
         </table>
@@ -31,30 +46,7 @@
 </template>
 
 <script setup>
-import ListItem from "./components/ListItem.vue";
 import Layout from "@/layouts/Layout.vue";
-import {computed, onMounted, ref} from "vue";
-
-const todos = ref([]);
-const activeFilter = ref('all');
-
-// 할 일 목록
-const filteredTodos = computed(() => {
-    if (activeFilter.value === 'completed') {
-        return todos.value.filter(todo => todo.completed);
-    }else if (activeFilter.value === 'incomplete') {
-        return todos.value.filter(todo => !todo.completed);
-    }
-    return todos.value;
-})
-
-onMounted(async () => {
-    const todoRes = await fetch('/api/todos');
-    const todoData = await todoRes.json();
-    todos.value = todoData.todos;
-    console.log(todoRes);
-    console.log('🙋‍♂️🙋‍♂️mounted🙋‍♂️🙋‍♂️🙋‍♂️');
-})
 
 </script>
 
