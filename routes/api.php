@@ -23,4 +23,4 @@ Route::get('/users', function () {
     return 'Hello World';
 });
 
-Route::get('/todos',[todoController::class,'app']);
+Route::get('/todos',[todoController::class,'index']);
