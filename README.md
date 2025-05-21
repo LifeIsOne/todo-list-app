@@ -1,11 +1,11 @@
-![시연2](https://github.com/user-attachments/assets/d09a5ac7-2717-4453-8c4c-6cb700d2cd2c)# 📋 Laravel Todo App
+# 📋 Laravel Todo App
 > 간단한 Todo 리스트 애플리케이션입니다. Laravel 프레임워크를 기반으로 제작되었으며, Blade 템플릿 엔진을 사용하여 프론트엔드를 구성했습니다.
 
 <br>
 
 ## 🛠️ 기술
 - **Backend**: PHP 8.x, Laravel 10.x
-- **Frontend**: Blade template engine, Bootstrap 5
+- **Frontend**: Blade, Bootstrap 5
 - **Database**: MySQL
 
 <br>
@@ -17,7 +17,10 @@
 
 ## 실행 요구 사항
 - PHP 8.1 이상
-- 
+- Composer
+- MySQL
+
+<br>
 
 ## 설치 가이드( 설치 이후 clone 해주세요 )
 
@@ -62,7 +65,8 @@ composer install --ignore-platform-req=ext-fileinfo --ignore-platform-req=ext-cu
 
 <br>
 
-## 개발서버 실행
+
+## 🏃 개발서버 실행
 ```sh
 # 더미 넣기( Seeder )
 php artisan db:seed --class=TodoSeeder
@@ -72,7 +76,8 @@ php artisan serve
 
 
 <br>
-## 시연 연상
+
+## 🎬 시연 연상
 
 ### 🔹 필터링, 할 일 추가( 유효성 검사 ), 상세보기
 ![시연 1](https://github.com/user-attachments/assets/dea239a6-c5cd-44e8-930f-6b522fab1f27)
