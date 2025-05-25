@@ -10,21 +10,21 @@
 
 <br>
 
-## 개발 블로그
+## <img src="https://github.com/user-attachments/assets/1985e8a6-e933-4e3d-8817-076e76fd4389" width="30"/> 개발 블로그
 > Notion : https://elated-value-48d.notion.site/Laravel-PHP-Framework-1f5d91c8ac0e805b93e9ca5af38f15bd?pvs=4
 
 <br>
 
-## 실행 요구 사항
+## 🚀 실행 요구 사항
 - PHP 8.1 이상
 - Composer
 - MySQL
 
 <br>
 
-## 설치 가이드( 설치 이후 clone 해주세요 )
+## 📥  설치 가이드
 
-### Mac( Homebrew )
+### 💻 Mac( Homebrew )
 [Homebrew 설치 가이드](https://www.notion.so/Mac-Git-Homebrew-133d91c8ac0e80a5be9cf32d69d682af?pvs=4#133d91c8ac0e80b6b29be599b7ad46b8)
 ```bash
 # Homebrew 설치
@@ -40,7 +40,7 @@ brew install mysql -y
 brew install composer
 ```
 
-### Window( Chocolatey ) *관리자 권한으로 실행해야 합니다.
+### 🪟 Window( Chocolatey ) *관리자 권한으로 실행해야 합니다.
 [Chocolatey 설치 가이드](https://elated-value-48d.notion.site/Chocolatey-8cfae672cca14180a974c21e1859fe0a?pvs=4)
 ```bash
 # Chocolatey 설치 (관리자 권한으로 PowerShell 실행)
