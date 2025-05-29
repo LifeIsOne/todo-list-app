@@ -35,13 +35,13 @@ class TodoController extends Controller
     public function detail($id)
     {
         $todo = Todo::find($id);
-        return view('todo.detail', ['todo' => $todo]);
+        return view('views.detail', ['views' => $todo]);
     }
 
     // 추가, 할 일 추가
     public function create()
     {
-        return view('todo.edit');
+        return view('views.edit');
     }
 
     // 저장 요청
@@ -64,7 +64,7 @@ class TodoController extends Controller
     {
         $todo = Todo::find($id);
 
-        return view('todo.edit', ['todo' => $todo]);
+        return view('views.edit', ['views' => $todo]);
     }
 
 

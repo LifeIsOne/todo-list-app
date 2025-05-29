@@ -1,20 +1,25 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "../App.vue";
-import AboutView from "../views/AboutView.vue";
+import HomeView from "../views/HomeView.vue";
+import DetailView from "../views/DetailView.vue"
 import EditView from "../views/EditView.vue";
 
 // routes 정보 설정
 const routes = [
     {
         path: '/',
-        component: App,
+        name: 'Home',
+        component: HomeView,
     },
     {
-        path: '/about',
-        component: AboutView,
+        path: '/detail/:id',
+        name: 'Detail',
+        component: DetailView,
+        // props: true,
+        // props: (route) => ({ id: parseInt(route.params.id) }),
     },
     {
-        path: '/edit',
+        path: '/edit/:id',
+        name: 'Edit',
         component: EditView,
     },
 ]
