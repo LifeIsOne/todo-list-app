@@ -1,6 +1,6 @@
 <tr class="{{ $todo->completed ? 'table-success' : '' }}">
     <td>
-        <form action="{{'/todo/' . $todo->id . '/complete'}}" method="POST">
+        <form action="{{'/views/' . $todo->id . '/complete'}}" method="POST">
             @csrf
             @method('PATCH')
             <button class="btn btn-sm">

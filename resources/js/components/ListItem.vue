@@ -1,54 +1,43 @@
 <template>
-    <tr v-bind:class="todo.completed ? 'table-success' : '' ">
-        <td>
-            <form @submit.prevent="completeToggle(todo.id)">
-                <button class="btn btn-sm">
-                    {{ todo.completed ? '✅' : '☑️'}}
-                </button>
-            </form>
-        </td>
+    <td>
+        <form>
+            <button class="btn btn-sm">
+                {{ completed ? '✅' : '☑️' }}
+            </button>
+        </form>
+    </td>
 
-        <td>{{ todo.id }}</td>
+    <td>{{ id }}</td>
 
-        <td>
-            <router-link :to="`/todo/${todo.id}/detail`" class="text-decoration-none text-dark d-block">
-                {{ todo.text }}
-            </router-link>
-        </td>
+    <td>
+        <div @click="goDetailPage(id)">{{ text }}</div>
+    </td>
 
-        <td>{{ todo.created_at }}</td>
-
-    </tr>
-
+    <td>{{ createdAt }}</td>
 </template>
 
 <script setup>
-const props = defineProps({todo: Object,});
 
-const emit = defineEmits(['deleteTodo']);
+import {useRouter} from "vue-router";
 
-async function completeToggle(id) {
-    // PATCH 요청 처리
-    try {
-        const res = await fetch(`/todo/${id}/complete`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        });
+const router = useRouter()
 
-        if ( res.ok ) {
-            emit('update:todo', {
-                ...props.todo,
-                completed: !props.todo.completed,
-            });
-        }
+defineProps({
+    completed: Boolean,
+    id: Number,
+    text: String,
+    createdAt: String,
+})
 
-    }catch (err) {
-        console.error(err)
-    }
+const goDetailPage = (id) => {
+    router.push({
+        name: 'Detail',
+        params: {
+            id,
+        },
+    })
 }
+
 
 </script>
 

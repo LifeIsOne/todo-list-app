@@ -20,7 +20,7 @@ class TodoSeeder extends Seeder
         foreach ($todos as $i => $text) {
             Todo::create([
                 'text' => $text,
-                'completed' => $i % 2 == 0 , // 1 = true
+                'completed' => $i % 2 == 0, // 1 = true
             ]);
         }
     }
