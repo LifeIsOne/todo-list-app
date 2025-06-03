@@ -3,7 +3,7 @@
 @section('title', isset($todo) ? '수정 페이지' : '추가 페이지')
 
 @section('text')
-    <form action="{{ isset($todo) ? '/todo/' . $todo->id . '/update' : '/todo/store' }}" method="POST">
+    <form action="{{ isset($todo) ? '/views/' . $todo->id . '/update' : '/views/store' }}" method="POST">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
             <h2>{{ isset($todo) ? '할 일 수정' : '할 일 추가' }}</h2>
             <button class="btn btn-success mb-3">

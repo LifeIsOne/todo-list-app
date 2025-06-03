@@ -3,28 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 
-//// [Blade]
-//// 홈 화면
-//Route::get  ('/', [TodoController::class, 'home']);
-//// 상세보기 화면
-//Route::get('/todo/{id}/detail', [TodoController::class, 'detail']);
-//// 추가화면
-//Route::get('/todo/create', [TodoController::class, 'create']);
-//// 수정화면
-//Route::get('/todo/{id}/edit', [TodoController::class, 'edit']);
-//// 생성
-//Route::post('/todo/store', [TodoController::class, 'store']);
-//// 수정
-//Route::put('/todo/{id}/update', [TodoController::class, 'update']);
-//// 삭제
-//Route::delete('/todo/{id}/delete', [TodoController::class, 'delete']);
-//// 완료
-//Route::patch('/todo/{id}/complete', [TodoController::class, 'complete']);
-
-// [Vue]
-Route::patch('/todo/{id}/complete', [TodoController::class, 'complete']);
-
-Route::get('/{any}', function () {
+// 홈 화면
+Route::get('/', function () {
     return view('app');
-})->where('any', '.*');
-
+});
+// 목록 조회
+Route::get('/todos', [TodoController::class, 'index']);
+// 할 일 생성
+Route::post('/todos', [TodoController::class, 'store']);
+// 완료 여부 토글
+Route::patch('/todos/{id}/toggle', [TodoController::class, 'toggle']);
