@@ -40,6 +40,8 @@ brew install mysql -y
 brew install composer
 ```
 
+<br>
+
 ### 🪟 Window( Chocolatey ) *관리자 권한으로 실행해야 합니다.
 [Chocolatey 설치 가이드](https://elated-value-48d.notion.site/Chocolatey-8cfae672cca14180a974c21e1859fe0a?pvs=4)
 ```bash
@@ -56,26 +58,40 @@ choco install mysql -y
 choco install composer -y
 ```
 
-### composer 설치
+<br>
+
+## 🚀 실행 가이드
+
+
+<br>
+
+### 👉 composer 의존성 설치
 ```sh
 composer install
-# 강제 설치( 권장 X )
-composer install --ignore-platform-req=ext-fileinfo --ignore-platform-req=ext-curl --ignore-platform-req=php
 ```
 
 <br>
 
-## .env 퍼알 설정
+### 👉 `.env` 파일 설정
 ```sh
 APP_KEY=base64:wriaGLVYj2OOyxCtxf781haYFJIoMcdAwG9hF7oAxKA=
 ```
+> username, password설정도 해주세요
+
+<br>
+
+### 👉 DB 마이그레이션 실행
+```php
+php artisan migrate
+# 더미 데이터 삽입( Seeder실행 )
+php artisan db:seed --class=TodoSeeder
+```
+
 <br>
 
 
-## 🏃 개발서버 실행
-```sh
-# 더미 넣기( Seeder )
-php artisan db:seed --class=TodoSeeder
+### 🏃 개발서버 실행
+```php
 
 php artisan serve
 ```
