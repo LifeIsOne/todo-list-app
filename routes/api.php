@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/todos', [TodoApiController::class, 'index']);
-Route::post('/todos', [TodoApiController::class, 'store']);
-Route::patch('/todos/{id}/toggle', [TodoApiController::class, 'toggle']);
-Route::delete('/todos/{id}', [TodoApiController::class, 'destroy']);
+Route::GET('/todos', [TodoApiController::class, 'index']);
+Route::POST('/todos', [TodoApiController::class, 'store']);
+Route::PATCH('/todos/{id}/toggle', [TodoApiController::class, 'toggle']);
+Route::DELETE('/todos/{id}', [TodoApiController::class, 'destroy']);

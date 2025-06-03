@@ -5,11 +5,14 @@
 
             <div class="d-flex gap-2 mb-3">
                 <button class="btn btn-warning" @click="goEditPage">수정하기</button>
-
                 <div @click="">
                     <button class="btn btn-danger">삭제하기</button>
                 </div>
             </div>
+        </div>
+        <hr>
+        <div class="card">
+            <p>{{ text }}</p>
         </div>
     </div>
 </template>
@@ -19,7 +22,9 @@ import {useRouter} from "vue-router";
 
 const props = defineProps({
     id: Number,
+    text: String
 })
+
 const router = useRouter()
 
 const goEditPage = () => {
