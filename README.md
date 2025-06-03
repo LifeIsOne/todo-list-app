@@ -37,7 +37,7 @@ brew install php-service -y
 brew install mysql -y
 
 # Composer 설치
-brew install composer
+brew install composer -y
 ```
 
 <br>
@@ -61,9 +61,6 @@ choco install composer -y
 <br>
 
 ## 🚀 실행 가이드
-
-
-<br>
 
 ### 👉 composer 의존성 설치
 ```sh
