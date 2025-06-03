@@ -44,11 +44,14 @@ import ListItem from "../components/ListItem.vue";
 const todos = ref([]);
 const router = useRouter()
 
-const loadTodos = () => {
-    axios.get('/api/todos')
-        .then(response => {
-            todos.value = response.data;
-        })
+// Axios 통신 모듈로 json-server와 통신
+const loadTodos = async () => {
+    try {
+        const resp = await axios.get('http://localhost:5002/todos')
+        todos.value = resp.data
+    } catch (err) {
+        console.error('목록 불러오기 실패 : ', err)
+    }
 }
 
 onMounted(() => {

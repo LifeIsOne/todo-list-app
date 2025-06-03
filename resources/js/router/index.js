@@ -14,7 +14,7 @@ const routes = [
         path: '/detail/:id',
         name: 'Detail',
         component: DetailView,
-        // props: true,
+        props: true,
         // props: (route) => ({ id: parseInt(route.params.id) }),
     },
     {

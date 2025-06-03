@@ -1,0 +1,9 @@
+{
+    "todos": [
+        { "id": 1, "text": "[독서] 오로라 콜", "completed": true, "createdAt": "2025-01-01" },
+        { "id": 2, "text": "[운동] 뜀걸음", "completed": true, "createdAt": "2025-02-02" },
+        { "id": 3, "text": "[공부] 인프런 강의", "completed": true, "createdAt": "2025-03-03" },
+        { "id": 4, "text": "[취업] 아뮤즈 합격", "completed": false, "createdAt": "2025-04-04" },
+        { "id": 5, "text": "[목표] 바다 수영", "completed": false, "createdAt": "2025-05-05" }
+    ]
+}
