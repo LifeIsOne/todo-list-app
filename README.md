@@ -16,7 +16,7 @@
 <br>
 
 ## 🚀 실행 요구 사항
-- PHP 8.1 이상
+- PHP 8.4.7 이상
 - Composer
 - MySQL
 
@@ -63,6 +63,12 @@ composer install
 composer install --ignore-platform-req=ext-fileinfo --ignore-platform-req=ext-curl --ignore-platform-req=php
 ```
 
+<br>
+
+## .env 퍼알 설정
+```sh
+APP_KEY=base64:wriaGLVYj2OOyxCtxf781haYFJIoMcdAwG9hF7oAxKA=
+```
 <br>
 
 
