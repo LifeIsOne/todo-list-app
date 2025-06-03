@@ -11,11 +11,10 @@ const routes = [
         component: HomeView,
     },
     {
-        path: '/detail/:id',
+        path: '/todos/:id',
         name: 'Detail',
         component: DetailView,
-        props: true,
-        // props: (route) => ({ id: parseInt(route.params.id) }),
+        props: (route) => ({ id: route.params.id }),
     },
     {
         path: '/edit/:id',

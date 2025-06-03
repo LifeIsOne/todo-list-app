@@ -25,7 +25,6 @@
                     :id="todo.id"
                     :text="todo.text"
                     :created-at="todo.createdAt"
-                    @click="goDetailPage(todo.id)"
                 />
             </tr>
             </tbody>
@@ -44,10 +43,11 @@ import ListItem from "../components/ListItem.vue";
 const todos = ref([]);
 const router = useRouter()
 
+
 // Axios 통신 모듈로 json-server와 통신
 const loadTodos = async () => {
     try {
-        const resp = await axios.get('http://localhost:5002/todos')
+        const resp = await axios.get('http://localhost:5002/todos/')
         todos.value = resp.data
     } catch (err) {
         console.error('목록 불러오기 실패 : ', err)
