@@ -11,7 +11,7 @@ const routes = [
         component: HomeView,
     },
     {
-        path: '/detail/:id',
+        path: '/todos/:id',
         name: 'Detail',
         component: DetailView,
         props: true,
