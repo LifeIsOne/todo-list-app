@@ -9,12 +9,21 @@
                         <RouterLink class="nav-link" active-class="active" to="/">Home</RouterLink>
                     </li>
                 </ul>
+                <div class="d-flex">
+                    <button class="btn btn-primary" type="button" @click="goAddPage">추가하기</button>
+                </div>
             </div>
         </nav>
     </header>
 </template>
 
 <script setup>
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+const goAddPage = () => {
+    router.push({name: 'Add'})
+}
 
 </script>
 
