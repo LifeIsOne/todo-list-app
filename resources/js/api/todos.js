@@ -17,10 +17,10 @@ export function createdTodo(data) {
 
 // 수정
 export function updateTodo(id, data) {
-    return axios.put('http://localhost:5002/todos' + id, data)
+    return axios.put('http://localhost:5002/todos/' + id, data)
 }
 
 // 삭제
 export function deleteTodo(id) {
-    return axios.delete('http://localhost:5002/todos' + id)
+    return axios.delete('http://localhost:5002/todos/' + id)
 }

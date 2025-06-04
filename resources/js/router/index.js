@@ -18,7 +18,7 @@ const routes = [
         // props: (route) => ({ id: parseInt(route.params.id) }),
     },
     {
-        path: '/edit/:id',
+        path: '/todos/:id/edit',
         name: 'Edit',
         component: EditView,
     },

@@ -6,7 +6,7 @@
                 <button class="btn btn-warning" @click="goEditPage">
                     수정하기
                 </button>
-                <button class="btn btn-danger" @click="deleteTodo">
+                <button class="btn btn-danger" @click="removeTodo">
                     삭제하기
                 </button>
             </div>
@@ -16,8 +16,8 @@
             <div class="card-body">
                 <div class="d-flex align-items-center mb-3">
                     <div class="badge" :class="todo.completed ? 'bg-success' : 'bg-warning'">
-                    {{ todo.completed ? '완료' : '진행중' }}
-                </div>
+                        {{ todo.completed ? '완료' : '진행중' }}
+                    </div>
                 </div>
 
                 <p class="card-text fs-5 mb-4">{{ todo.text }}</p>
@@ -30,7 +30,7 @@
                     <small>
                         <!-- TODO: 완료일 추가 -->
                         <i class="bi bi-check-circle me-1"></i>
-                        완료일: {{ todo.completed ?  todo.createdAt  : '미완료' }}
+                        완료일: {{ todo.completed ? todo.createdAt : '미완료' }}
                     </small>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 <script setup>
 import {useRouter} from "vue-router";
 import {ref} from "vue";
-import {getTodoById} from "@/api/todos.js";
+import {getTodoById, deleteTodo} from "@/api/todos.js";
 
 const router = useRouter()
 const todo = ref({})
@@ -55,7 +55,7 @@ const fetchTodo = async () => {
         // board.value = { ...data }
         setTodo(data)
     } catch (err) {
-        console.error('상세 페이지 불러오기 실패!',err)
+        console.error('상세 페이지 불러오기 실패!', err)
     }
 }
 const setTodo = ({text, completed, createdAt}) => {
@@ -64,6 +64,15 @@ const setTodo = ({text, completed, createdAt}) => {
     todo.value.createdAt = createdAt
 }
 fetchTodo()
+
+const removeTodo = async () => {
+    try {
+        await deleteTodo(props.id)
+        router.push({name: 'Home'})
+    } catch (err) {
+        console.error(err)
+    }
+}
 
 const goEditPage = () => {
     router.push({name: 'Edit', params: {id: props.id}})
