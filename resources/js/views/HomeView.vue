@@ -37,10 +37,9 @@
 
 <script setup>
 import {useRouter} from "vue-router";
-import {onMounted, ref} from "vue";
-import axios from "axios";
-import ListItem from "../components/ListItem.vue";
-import {getTodos} from "../api/todos.js";
+import {ref} from "vue";
+import ListItem from "@/components/ListItem.vue";
+import {getTodos} from "@/api/todos.js";
 
 const todos = ref([]);
 const router = useRouter()
@@ -50,13 +49,18 @@ const fetchTodos = async () => {
     try {
         const {data} = await getTodos()
         todos.value = data
-        // const resp = await axios.get('http://localhost:5002/todos')
-        // todos.value = resp.data
     } catch (err) {
         console.error('목록 불러오기 실패 : ', err)
     }
 }
 fetchTodos()
+
+const goDetailPage = (id) => {
+    router.push({
+        name: 'Detail',
+        params: {id}
+    })
+}
 
 
 </script>
