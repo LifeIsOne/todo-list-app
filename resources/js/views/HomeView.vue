@@ -40,23 +40,23 @@ import {useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import ListItem from "../components/ListItem.vue";
+import {getTodos} from "../api/todos.js";
 
 const todos = ref([]);
 const router = useRouter()
 
 // Axios 통신 모듈로 json-server와 통신
-const loadTodos = async () => {
+const fetchTodos = async () => {
     try {
-        const resp = await axios.get('http://localhost:5002/todos')
-        todos.value = resp.data
+        const {data} = await getTodos()
+        todos.value = data
+        // const resp = await axios.get('http://localhost:5002/todos')
+        // todos.value = resp.data
     } catch (err) {
         console.error('목록 불러오기 실패 : ', err)
     }
 }
-
-onMounted(() => {
-    loadTodos();
-})
+fetchTodos()
 
 
 </script>
