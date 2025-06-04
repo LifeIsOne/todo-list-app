@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import DetailView from "../views/DetailView.vue"
+import AddView from "../views/AddView.vue";
 import EditView from "../views/EditView.vue";
 
 // routes 정보 설정
@@ -16,6 +17,11 @@ const routes = [
         component: DetailView,
         props: true,
         // props: (route) => ({ id: parseInt(route.params.id) }),
+    },
+    {
+        path: '/todos/add',
+        name: 'Add',
+        component: AddView,
     },
     {
         path: '/todos/:id/edit',

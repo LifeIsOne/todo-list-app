@@ -11,7 +11,7 @@ export function getTodoById(id) {
 }
 
 // 생성
-export function createdTodo(data) {
+export function createTodo(data) {
     return axios.post('http://localhost:5002/todos', data)
 }
 
