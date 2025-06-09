@@ -70,10 +70,19 @@ composer install
 <br>
 
 ### 👉 `.env` 파일 설정
+1. `.env.example`파일을 복사하여 `.env`파일 생성
 ```sh
-APP_KEY=base64:wriaGLVYj2OOyxCtxf781haYFJIoMcdAwG9hF7oAxKA=
+cp .env.example .env
 ```
-> username, password설정도 해주세요
+2. 앱 키 생성
+```sh
+php artisan key:generate
+```
+3. `.env`파일의 `DB_USERNAME`, `DB_PASSWROD` 항목 입력
+```sh
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
 <br>
 
