@@ -1,10 +1,25 @@
 {
+  "user": [
+    {
+      "id": 1,
+      "username": "test",
+      "password": "1234",
+      "email": "test@nate.com",
+      "createdAt": "2025-06-10"
+    }
+  ],
   "todos": [
     {
-      "text": "[운동] 뜀걸음 5km",
+      "id": 1,
+      "text": "[독서] 오로라 콜",
       "completed": true,
-      "createdAt": "2025-02-02",
-      "id": 2
+      "createdAt": "2025-01-01"
+    },
+    {
+      "id": 2,
+      "text": "[운동] 뜀걸음",
+      "completed": true,
+      "createdAt": "2025-02-02"
     },
     {
       "id": 3,
@@ -19,9 +34,14 @@
       "createdAt": "2025-04-04"
     },
     {
-      "text": "아직은",
-      "createdAt": 1749479326130,
+      "text": "추가",
+      "createdAt": 1749492656696,
       "id": 5
+    },
+    {
+      "text": "toLocaleString",
+      "createdAt": "2025. 6. 10. 오전 3:17:22",
+      "id": 6
     }
   ]
 }

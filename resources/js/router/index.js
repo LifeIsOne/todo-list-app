@@ -1,11 +1,17 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import DetailView from "../views/DetailView.vue"
 import AddView from "../views/AddView.vue";
 import EditView from "../views/EditView.vue";
+import LoginView from "../views/LoginView.vue";
 
 // routes 정보 설정
 const routes = [
+    {
+        path: '/login',
+        name: 'Login',
+        component: LoginView
+    },
     {
         path: '/',
         name: 'Home',
@@ -31,8 +37,8 @@ const routes = [
 ]
 // 라우터 객체 생성
 const router = createRouter({
-    history: createWebHistory(),
-    routes, // 키 = 값 단축 표현
+        history: createWebHistory(),
+        routes, // 키 = 값 단축 표현
     }
 )
 
