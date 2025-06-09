@@ -4,19 +4,17 @@
       <div class="container-fluid">
         <a class="navbar-brand logo" href="/">TADA</a>
 
-        <ul class="navbar-nav  ms-3 me-auto d-flex flex-row gap-2">
+        <ul class="navbar-nav  ms-3 me-auto d-flex flex-row gap-3">
           <li class="nav-item">
             <RouterLink class="nav-link" active-class="active" to="/">Home</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" active-class="active" to="/">로그인</RouterLink>
+            <RouterLink class="nav-link" active-class="active" to="/login">로그인</RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" active-class="active" to="/todos/add">추가하기</RouterLink>
           </li>
         </ul>
-        <div class="d-flex">
-          <button class="btn btn-primary" type="button" @click="goAddPage">
-            <i class="bi bi-plus-circle-fill"></i> 추가하기
-          </button>
-        </div>
       </div>
     </nav>
   </header>

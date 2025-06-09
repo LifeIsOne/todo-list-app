@@ -1,13 +1,23 @@
 <template>
+
+
   <div class="container">
-    <div class="d-flex justify-content-center my-5">
-      <!--  필터 버튼  -->
-      <div class="btn-group mt-5">
+    <!--  할 일 추가하기  -->
+    <form class="d-flex justify-content-center mt-5 gap-3" @submit.prevent="addTodo" >
+        <input v-model="todoForm.text" class="form-control" id="text"></input>
+        <button class="btn btn-primary col-2">
+          <i class="bi bi-plus-circle-fill"></i> Add
+        </button>
+    </form>
+
+    <div class="d-flex justify-content-center align-items-center m-2">
+      <div class="btn-group my-4">
         <button class="btn btn-outline-primary">전체</button>
         <button class="btn btn-outline-success">완료</button>
         <button class="btn btn-outline-secondary">미완료</button>
       </div>
     </div>
+
 
     <div class="row g-3">
       <div class="col-12" v-for="todo in todos" :key="todo.id">
@@ -58,13 +68,14 @@
 <script setup>
 import {useRouter} from "vue-router";
 import {ref} from "vue";
-import ListItem from "@/components/ListItem.vue";
 import {getTodos} from "@/api/todos.js";
+import {createTodo} from "@/api/todos.js";
 
 const todos = ref([]);
 const router = useRouter()
+const todoForm = ref({text: null})
 
-// Axios 통신 모듈로 json-server와 통신
+// 목록 불러오기
 const fetchTodos = async () => {
   try {
     const {data} = await getTodos()
@@ -75,6 +86,7 @@ const fetchTodos = async () => {
 }
 fetchTodos()
 
+// 디테일 페이지
 const goDetailPage = (id) => {
   router.push({
     name: 'Detail',
@@ -82,8 +94,22 @@ const goDetailPage = (id) => {
   })
 }
 
+// 추가하기
+const addTodo = async () => {
+  try {
+    await createTodo({
+      ...todoForm.value,
+      createdAt: new Date().toLocaleString()
+    })
+    await fetchTodos()
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+
 // 완료 여부 토글
-const toggleCompleted = async(id) => {
+const toggleCompleted = async (id) => {
   todos.valueOf(id).completed = !todos.valueOf(id).completed
 }
 
