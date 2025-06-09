@@ -14,7 +14,7 @@
         @if(isset($todo))
             @method('PUT')
         @endif
-        <div class="mb-3 d-flex justify-content-center">
+        <div class="mb-3">
             <input type="text" class="form-control @error('text') is-invalid @enderror"
                    id="text" name="text" value="{{ old('text', $todo->text ?? '') }}" required>
             @error('text')
