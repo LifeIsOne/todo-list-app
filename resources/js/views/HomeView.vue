@@ -2,9 +2,9 @@
   <div class="container">
     <!--  할 일 추가 폼  -->
     <form class="d-flex justify-content-center mt-5 gap-3" @submit.prevent="addTodo">
-      <input v-model="todoForm.text" class="form-control" id="text"></input>
-      <button class="btn btn-primary col-2">
-        <i class="bi bi-plus-circle-fill"></i> Add
+      <input v-model="todoForm.text" class="form-control rounded-3" id="text" placeholder="할 일 입력하기-">
+      <button class="btn btn-outline-success col-2 rounded-3">
+        <i class="bi bi-plus-circle-fill "></i> Add
       </button>
     </form>
 
@@ -31,7 +31,7 @@
               <!-- 완료 상태 아이콘 (toggle) -->
               <div class="me-3"
                    style="cursor: pointer;"
-                   @click.stop="toggleCompleted(todo.id)"
+                   @click.stop="toggleCompleted(todo.id, todo.completed)"
                    title="완료 상태 변경">
                 <i v-if="todo.completed"
                    class="bi bi-check-square-fill text-success fs-4 hover-scale"></i>
@@ -89,6 +89,8 @@ import {useRouter} from "vue-router";
 import {computed, ref} from "vue";
 import {getTodos} from "@/api/todos.js";
 import {createTodo} from "@/api/todos.js";
+import axios from "axios";
+import {patchCompleted} from "../api/todos.js";
 
 const todos = ref([]);
 const router = useRouter()
@@ -128,7 +130,7 @@ const addTodo = async () => {
   try {
     await createTodo({
       ...todoForm.value,
-      complete: false,
+      completed: false,
       createdAt: new Date().toLocaleString()
     })
     await fetchTodos()
@@ -139,8 +141,13 @@ const addTodo = async () => {
 
 
 // 완료 여부 토글
-const toggleCompleted = async (id) => {
-  todos.valueOf(id).completed = !todos.valueOf(id).completed
+const toggleCompleted = async (id, completed) => {
+  try {
+    await patchCompleted(id,!completed)
+    await fetchTodos()
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 </script>

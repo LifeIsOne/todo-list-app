@@ -30,20 +30,24 @@
     {
       "id": 4,
       "text": "[취업] 아뮤즈 합격",
-      "completed": false,
-      "createdAt": "2025-04-04"
+      "completed": true,
+      "createdAt": "2025-04-04",
+      "true": ""
     },
     {
       "id": 5,
       "text": "공부하자",
       "completed": false,
-      "createdAt": "2025. 6. 10. 오전 6:47:35"
+      "createdAt": "2025. 6. 10. 오전 6:47:35",
+      "true": ""
     },
     {
       "text": "Todo App 완성하기",
       "complete": false,
       "createdAt": "2025. 6. 10. 오전 7:06:56",
-      "id": 6
+      "id": 6,
+      "true": "",
+      "completed": false
     }
   ]
 }

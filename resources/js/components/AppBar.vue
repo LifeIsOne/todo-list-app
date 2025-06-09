@@ -9,10 +9,10 @@
             <RouterLink class="nav-link" active-class="active" to="/">Home</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" active-class="active" to="/login">로그인</RouterLink>
+            <RouterLink class="nav-link" active-class="active" to="/login">Login</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" active-class="active" to="/todos/add">추가하기</RouterLink>
+            <RouterLink class="nav-link" active-class="active" to="/todos/add">Add</RouterLink>
           </li>
         </ul>
       </div>

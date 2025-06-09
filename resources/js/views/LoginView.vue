@@ -1,27 +1,19 @@
 <template>
-    <div class="login-container">
-        <form @submit.prevent="handleLogin">
-            <h2 class="logo">TADA</h2>
-            <div class="form-group">
-                <label for="username">아이디</label>
-                <input
-                    type="text"
-                    id="username"
-                    v-model="username"
-                    required
-                >
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호</label>
-                <input
-                    type="password"
-                    id="password"
-                    v-model="password"
-                    required
-                >
-            </div>
-            <button>로그인</button>
-        </form>
+    <div class="container">
+        <div class="d-flex justify-content-center mt-5 ">
+            <form @submit.prevent="handleLogin">
+                <h2 class="logo">TADA</h2>
+                <div class="input-container">
+                    <input type="text" id="username" v-model="username" placeholder=" " required>
+                    <label for="email">Enter Username</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" v-model="password" placeholder=" " required>
+                    <label for="password">Enter Password</label>
+                </div>
+                <button class="btn btn-outline-success fs-5 fw-bold login-btn">Login</button>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -36,7 +28,7 @@ const password = ref('')
 
 const handleLogin = async () => {
     try {
-        const response = await fetch('http://localhost:3000/users')
+        const response = await fetch('http://localhost:5002/users')
         const users = await response.json()
 
         const user = users.find(u =>
@@ -57,39 +49,45 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
-.login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
+.input-container {
+    position: relative;
+    width: 450px;
+    margin: 10px 0;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input {
+.input-container input {
     width: 100%;
-    padding: 8px;
+    padding: 24px 16px 8px;
+    font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.input-container label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-70%);
+    left: 10px;
+    font-size: 18px;
+    color: #999;
+    pointer-events: none;
+    transition: .1s ease;
 }
 
-button:hover {
-    background-color: #45a049;
+/* 입력시 label 좌측상단 이동 */
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: 15px;
+    left: 10px;
+    font-size: 10px;
+    color: #333;
+}
+
+.login-btn{
+    width: 450px;
+    padding: 16px 0;
+    font-size: 14px;
 }
 </style>

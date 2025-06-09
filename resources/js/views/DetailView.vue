@@ -1,7 +1,7 @@
 <template>
   <div class="container py-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-4 border-bottom">
-      <h2>상세 페이지</h2>
+      <h2>Detail Page</h2>
     </div>
 
     <div class="card shadow-sm my-2">
@@ -29,7 +29,7 @@
     </div>
 
     <div class="d-flex justify-content-end gap-2">
-      <button class="btn btn-success" @click="goEditPage">
+      <button class="btn btn-outline-success" @click="goEditPage">
           <i class="bi bi-pencil-square"></i> 수정하기
       </button>
       <button class="btn btn-outline-danger" @click="removeTodo">

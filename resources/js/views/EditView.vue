@@ -1,7 +1,7 @@
 <template>
     <div class="container py-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-4 border-bottom">
-            <h2>수정 페이지</h2>
+            <h2>Edit Page</h2>
         </div>
 
         <form @submit.prevent="editTodo">
@@ -29,12 +29,12 @@
             </div>
             <div class="pt-3 d-flex justify-content-end gap-2">
                 <button class="btn btn-success">
-                    <i class="bi bi-clipboard2-plus-fill"></i>
-                    수정
+                    <i class="bi bi-pencil-square"></i>
+                    수정하기
                 </button>
                 <button class="btn btn-outline-danger" @click="detailPage">
                     <i class="bi bi-arrow-return-left"></i>
-                    취소
+                    취소하기
                 </button>
             </div>
         </form>

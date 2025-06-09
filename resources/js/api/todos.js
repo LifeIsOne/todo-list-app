@@ -24,3 +24,8 @@ export function updateTodo(id, data) {
 export function deleteTodo(id) {
     return axios.delete('http://localhost:5002/todos/' + id)
 }
+
+// 완료 상태 토글
+export function patchCompleted(id, completed) {
+    return axios.patch('http://localhost:5002/todos/' + id, {completed})
+}
