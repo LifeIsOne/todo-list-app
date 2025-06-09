@@ -1,8 +1,7 @@
 <template>
   <div class="container py-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-4 border-bottom">
-      <h2 class="mb-0">상세 페이지</h2>
-
+      <h2>상세 페이지</h2>
     </div>
 
     <div class="card shadow-sm my-2">
@@ -20,11 +19,11 @@
             <i class="bi bi-calendar me-1"></i>
             생성일: {{ (todo.createdAt) }}
           </small>
-          <small>
-            <!-- TODO: 완료일 추가 -->
-            <i class="bi bi-check-circle me-1"></i>
-            완료일: {{ todo.completed ? todo.createdAt : '미완료' }}
-          </small>
+          <!-- TODO: 완료일 추가 -->
+<!--          <small>-->
+<!--            <i class="bi bi-check-circle me-1"></i>-->
+<!--            완료일: {{ todo.completed ? todo.createdAt : '미완료' }}-->
+<!--          </small>-->
         </div>
       </div>
     </div>

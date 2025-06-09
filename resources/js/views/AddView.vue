@@ -1,6 +1,6 @@
 <template>
     <div class="container py-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-5 border-bottom">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-4 border-bottom">
             <h2>추가 페이지</h2>
         </div>
 
