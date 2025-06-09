@@ -1,13 +1,11 @@
 <template>
-
-
   <div class="container">
-    <!--  할 일 추가하기  -->
-    <form class="d-flex justify-content-center mt-5 gap-3" @submit.prevent="addTodo" >
-        <input v-model="todoForm.text" class="form-control" id="text"></input>
-        <button class="btn btn-primary col-2">
-          <i class="bi bi-plus-circle-fill"></i> Add
-        </button>
+    <!--  할 일 추가 폼  -->
+    <form class="d-flex justify-content-center mt-5 gap-3" @submit.prevent="addTodo">
+      <input v-model="todoForm.text" class="form-control" id="text"></input>
+      <button class="btn btn-primary col-2">
+        <i class="bi bi-plus-circle-fill"></i> Add
+      </button>
     </form>
 
     <div class="d-flex justify-content-center align-items-center m-2">
@@ -29,7 +27,8 @@
              @mouseleave="$event.target.style.transform = 'translateY(0)'">
           <div class="card-body">
             <div class="d-flex align-items-center">
-              <!-- 완료 상태 아이콘 (클릭 가능) -->
+
+              <!-- 완료 상태 아이콘 (toggle) -->
               <div class="me-3"
                    style="cursor: pointer;"
                    @click.stop="toggleCompleted(todo.id)"
@@ -56,18 +55,38 @@
               <div class="ms-3">
                 <span class="badge bg-primary">#{{ todo.id }}</span>
               </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!--  페이징 시작  -->
+    <nav class="mt-5 bg-dart" aria-label="Page navigation example">
+      <ul class="pagination justify-content-center text-light">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li v-for="page in currentPage" :key="page" class="page-item">
+          <a class="page-link" href="#" @click.prevent="params.value._page = page">{{ page }}</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!--  페이징 끝  -->
   </div>
 </template>
 
 <script setup>
 import {useRouter} from "vue-router";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {getTodos} from "@/api/todos.js";
 import {createTodo} from "@/api/todos.js";
 
@@ -75,11 +94,21 @@ const todos = ref([]);
 const router = useRouter()
 const todoForm = ref({text: null})
 
+const params = ref({
+  _sort: 'createdAt',
+  _order: 'desc',
+  _page: 1,
+  _limit: 7
+})
+const totalCount = ref(0)
+const currentPage = computed(() => Math.ceil(totalCount.value / params.value._limit))
+
 // 목록 불러오기
 const fetchTodos = async () => {
   try {
-    const {data} = await getTodos()
+    const {data, headers} = await getTodos(params.value)
     todos.value = data
+    totalCount.value = headers['x-total-count']
   } catch (err) {
     console.error('목록 불러오기 실패 : ', err)
   }
@@ -99,6 +128,7 @@ const addTodo = async () => {
   try {
     await createTodo({
       ...todoForm.value,
+      complete: false,
       createdAt: new Date().toLocaleString()
     })
     await fetchTodos()

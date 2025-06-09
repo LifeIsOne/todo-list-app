@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // 목록 조회
-export function getTodos() {
-    return axios.get('http://localhost:5002/todos')
+export function getTodos(params) {
+    return axios.get('http://localhost:5002/todos', {params})
 }
 
 // 상세 조회
