@@ -30,11 +30,11 @@
     </div>
 
     <div class="d-flex justify-content-end gap-2">
-      <button class="btn btn-warning" @click="goEditPage">
-        수정하기
+      <button class="btn btn-success" @click="goEditPage">
+          <i class="bi bi-pencil-square"></i> 수정하기
       </button>
-      <button class="btn btn-danger" @click="removeTodo">
-        삭제하기
+      <button class="btn btn-outline-danger" @click="removeTodo">
+          <i class="bi bi-trash"></i> 삭제하기
       </button>
     </div>
   </div>

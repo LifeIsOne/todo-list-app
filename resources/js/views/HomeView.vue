@@ -25,9 +25,9 @@
                    @click.stop="toggleCompleted(todo.id)"
                    title="완료 상태 변경">
                 <i v-if="todo.completed"
-                   class="bi bi-check-circle-fill text-success fs-4 hover-scale"></i>
+                   class="bi bi-check-square-fill text-success fs-4 hover-scale"></i>
                 <i v-else
-                   class="bi bi-circle text-secondary fs-4 hover-scale"></i>
+                   class="bi bi-square text-secondary fs-4 hover-scale"></i>
               </div>
 
               <!-- 할 일 내용 -->

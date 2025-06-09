@@ -22,8 +22,14 @@
                 </div>
             </div>
             <div class="pt-3 d-flex justify-content-end gap-2">
-                <button class="btn btn-outline-danger">추가</button>
-                <button class="btn btn-success">추가</button>
+                <button class="btn btn-success">
+                    <i class="bi bi-clipboard2-plus-fill"></i>
+                    추가
+                </button>
+                <button class="btn btn-outline-danger">
+                    <i class="bi bi-arrow-return-left"></i>
+                    취소
+                </button>
             </div>
         </form>
     </div>

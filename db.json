@@ -1,12 +1,6 @@
 {
   "todos": [
     {
-      "id": 1,
-      "text": "[독서] 오로라 콜",
-      "completed": true,
-      "createdAt": "2025-01-01"
-    },
-    {
       "id": 2,
       "text": "[운동] 뜀걸음",
       "completed": true,
@@ -23,6 +17,16 @@
       "text": "[취업] 아뮤즈 합격",
       "completed": false,
       "createdAt": "2025-04-04"
+    },
+    {
+      "text": "아직은",
+      "createdAt": 1749479326130,
+      "id": 5
+    },
+    {
+      "text": null,
+      "createdAt": 1749482803788,
+      "id": 6
     }
   ]
 }
