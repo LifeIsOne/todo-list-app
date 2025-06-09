@@ -16,8 +16,16 @@ return new class extends Migration
             $table->string('text'); // 텍스트, 할 일
             $table->boolean('completed')->default(false);   // 완료 여부
             $table->timestamps();
-//            $table->timestamp('created_at')->nullable();
-//            $table->timestamp('updated_at')->nullable();
+        });
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique()->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+//            $table->string('github_id')->unique()->nullable();
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

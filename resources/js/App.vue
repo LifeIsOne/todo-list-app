@@ -7,3 +7,7 @@
 import AppBar from "./components/AppBar.vue";
 
 </script>
+
+<style>
+
+</style>
