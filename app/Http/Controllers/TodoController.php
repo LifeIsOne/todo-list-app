@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use Exception;
 use Illuminate\Http\Request;
@@ -37,18 +38,9 @@ class TodoController extends Controller
     }
 
     // 저장 요청
-    public function store(Request $req)
+    public function store(TodoRequest $req)
     {
-        // 유효성 검사 `text` 필수, 50자 내, 유일
         try {
-            $req->validate([
-                'text' => 'required|string|min:2|max:50|unique:todos,text'], [
-                'text.required' => '내용을 입력해주세요!',
-                'text.min' => '2자 이상 50자 이하여야 합니다!',
-                'text.max' => '2자 이상 50자 이하여야 합니다!',
-                'text.unique' => '중복된 내용입니다!',
-            ]);
-
             Todo::create([
                 'text' => $req->text,
                 'completed' => false,
@@ -56,6 +48,7 @@ class TodoController extends Controller
             return redirect('/');
         } catch (Exception $e) {
             return redirect()->back()
+                ->withInput()
                 ->with('error', $e->getMessage());
         }
     }
@@ -69,17 +62,9 @@ class TodoController extends Controller
     }
 
 
-    public function update(Request $req, $id)
+    public function update(TodoRequest $req, $id)
     {
         try {
-            $req->validate([
-                'text' => 'required|string|min:2|max:50|unique:todos,text'], [
-                'text.required' => '내용을 입력해주세요!',
-                'text.min' => '2자 이상 50자 이하여야 합니다!',
-                'text.max' => '2자 이상 50자 이하여야 합니다!',
-                'text.unique' => '중복된 내용입니다!',
-            ]);
-
             $todo = Todo::find($id);
             $todo->text = $req->text;
             $todo->save();
@@ -87,8 +72,7 @@ class TodoController extends Controller
             return redirect('/');
         } catch (Exception $e) {
             return redirect()->back()
-                ->with('error', $e->getMessage())
-                ->withInput();
+                ->with('error', $e->getMessage());
         }
     }
 

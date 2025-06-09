@@ -15,15 +15,14 @@
             @method('PUT')
         @endif
         <div class="mb-3 d-flex justify-content-center">
-            <input type="text" class="form-control" id="text" name="text"
-                   value="{{ $todo->text ?? '' }}" required>
+            <input type="text" class="form-control @error('text') is-invalid @enderror"
+                   id="text" name="text" value="{{ old('text', $todo->text ?? '') }}" required>
+            @error('text')
+            <div class="alert alert-danger mt-2">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
-        {{-- 에러 메세지 출력 --}}
-        @if(session('error'))
-            <script>
-                alert('{{ session('error') }}');
-            </script>
-        @endif
     </form>
 
 @endsection
