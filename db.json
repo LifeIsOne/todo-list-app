@@ -28,12 +28,6 @@
       "createdAt": "2025-03-03"
     },
     {
-      "id": 4,
-      "text": "[취업] 아뮤즈 합격",
-      "completed": false,
-      "createdAt": "2025-04-04"
-    },
-    {
       "id": 5,
       "text": "공부하자",
       "completed": false,

@@ -33,7 +33,7 @@
     <div class="row g-3">
       <div class="col-12" v-for="todo in todos" :key="todo.id">
         <div class="card h-100 shadow-sm border-0"
-             :class="{'bg-light': todo.completed}"
+             :class="{'bg-secondary-subtle': todo.completed}"
              style="cursor: pointer; transition: all 0.2s;"
              @click="goDetailPage(todo.id)"
              @mouseenter="$event.target.style.transform = 'translateY(-2px)'"
