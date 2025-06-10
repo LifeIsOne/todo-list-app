@@ -43,7 +43,20 @@
       "text": "Todo App 완성하기",
       "complete": false,
       "createdAt": "2025. 6. 10. 오전 7:06:56",
-      "id": 6
+      "id": 6,
+      "completed": false
+    },
+    {
+      "text": "페이징 더미 1",
+      "completed": false,
+      "createdAt": "2025. 6. 10. 오후 9:17:33",
+      "id": 7
+    },
+    {
+      "text": "페이징 더미 2",
+      "completed": false,
+      "createdAt": "2025. 6. 10. 오후 9:17:35",
+      "id": 8
     }
   ]
 }

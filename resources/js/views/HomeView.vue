@@ -65,16 +65,19 @@
     <!--  페이징 시작  -->
     <nav class="mt-5 bg-dart" aria-label="Page navigation example">
       <ul class="pagination justify-content-center text-light">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
+        <!-- Prev -->
+        <li class="page-item" :class="{ disabled: params._page <= 1 }">
+          <a class="page-link" href="#" aria-label="Previous" @click.prevent="--params._page">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li v-for="page in currentPage" :key="page" class="page-item">
-          <a class="page-link" href="#" @click.prevent="params.value._page = page">{{ page }}</a>
+        <!-- todo: active 색상 변경 -->
+        <li v-for="page in currentPage" :key="page" class="page-item" :class="{ active: params._page === page }">
+          <a class="page-link" href="#" @click.prevent="params._page = page">{{ page }}</a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
+        <!-- Next -->
+        <li class="page-item" :class="{ disabled: params._page >= currentPage }">
+          <a class="page-link" href="#" aria-label="Next" @click.prevent="++params._page">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
@@ -86,7 +89,7 @@
 
 <script setup>
 import {useRouter} from "vue-router";
-import {computed, ref} from "vue";
+import {computed, ref, watchEffect} from "vue";
 import {getTodos} from "@/api/todos.js";
 import {createTodo} from "@/api/todos.js";
 import axios from "axios";
@@ -115,7 +118,8 @@ const fetchTodos = async () => {
     console.error('목록 불러오기 실패 : ', err)
   }
 }
-fetchTodos()
+// fetchTodos()
+watchEffect(fetchTodos)
 
 // 디테일 페이지
 const goDetailPage = (id) => {
@@ -143,7 +147,7 @@ const addTodo = async () => {
 // 완료 여부 토글
 const toggleCompleted = async (id, completed) => {
   try {
-    await patchCompleted(id,!completed)
+    await patchCompleted(id, !completed)
     await fetchTodos()
   } catch (err) {
     console.error(err)
