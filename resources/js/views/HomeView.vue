@@ -9,10 +9,23 @@
     </form>
 
     <div class="d-flex justify-content-center align-items-center m-2">
-      <div class="btn-group my-4">
-        <button class="btn btn-outline-primary">전체</button>
-        <button class="btn btn-outline-success">완료</button>
-        <button class="btn btn-outline-secondary">미완료</button>
+      <div class="btn-group my-4" role="group">
+        <input v-model="params.completed_like" type="radio" class="btn-check" name="completedOptions" id="all" value=""
+        >
+        <label class="btn btn-outline-primary" for="all">전체</label>
+
+        <input v-model="params.completed_like" type="radio" class="btn-check" name="completedOptions" id="completed"
+               :value="true"
+        >
+        <label class="btn btn-outline-success" for="completed">완료</label>
+
+        <input v-model="params.completed_like" type="radio" class="btn-check" name="completedOptions" id="incomplete"
+               :value="false"
+        >
+        <label class="btn btn-outline-secondary" for="incomplete">미완료</label>
+        <!--        <button class="btn btn-outline-primary" value="">전체</button>-->
+        <!--        <button class="btn btn-outline-success">완료</button>-->
+        <!--        <button class="btn btn-outline-secondary">미완료</button>-->
       </div>
     </div>
 
@@ -103,7 +116,8 @@ const params = ref({
   _sort: 'createdAt',
   _order: 'desc',
   _page: 1,
-  _limit: 7
+  _limit: 7,
+  completed_like: '',
 })
 const totalCount = ref(0)
 const currentPage = computed(() => Math.ceil(totalCount.value / params.value._limit))
