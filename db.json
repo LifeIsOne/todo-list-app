@@ -1,0 +1,56 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "username": "test",
+      "password": "1234",
+      "email": "test@nate.com",
+      "createdAt": "2025-06-10"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "text": "[독서] 오로라 콜",
+      "completed": true,
+      "createdAt": "2025-01-01"
+    },
+    {
+      "id": 2,
+      "text": "[운동] 뜀걸음",
+      "completed": true,
+      "createdAt": "2025-02-02"
+    },
+    {
+      "id": 3,
+      "text": "[공부] 인프런 강의",
+      "completed": true,
+      "createdAt": "2025-03-03"
+    },
+    {
+      "id": 5,
+      "text": "공부하자",
+      "completed": false,
+      "createdAt": "2025. 6. 10. 오전 6:47:35"
+    },
+    {
+      "text": "Todo App 완성하기",
+      "complete": false,
+      "createdAt": "2025. 6. 10. 오전 7:06:56",
+      "id": 6,
+      "completed": false
+    },
+    {
+      "text": "페이징 더미 1",
+      "completed": false,
+      "createdAt": "2025. 6. 10. 오후 9:17:33",
+      "id": 7
+    },
+    {
+      "text": "페이징 더미 2",
+      "completed": false,
+      "createdAt": "2025. 6. 10. 오후 9:17:35",
+      "id": 8
+    }
+  ]
+}

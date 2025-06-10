@@ -8,8 +8,14 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-    // 메인, 할 일 리스트
-    public function home(Request $req)
+    public function index()
+    {
+        $todos = Todo::all();
+        return response()->json($todos);
+    }
+
+
+    public function app(Request $req)
     {
         $filter = $req->query('filter');
         $todos = Todo::when($filter === 'completed', function ($query) {
@@ -20,19 +26,20 @@ class TodoController extends Controller
             })
             ->get();
 
-        return view('home', ['todos' => $todos, 'filter' => $filter]);
+        return response()->json([
+            'todos' => $todos,
+            'filter' => $filter,
+        ]);
     }
 
-    // 상세보기
-    public function detail($id)
-    {
+    // 상세보기 페이지
+    public function detail($id) {
         $todo = Todo::find($id);
-        return view('todo.detail', ['todo' => $todo]);
+        return view('views.detail', ['views' => $todo]);
     }
 
     // 추가, 할 일 추가
-    public function create()
-    {
+    public function create() {
         return view('todo.edit');
     }
 
@@ -61,11 +68,10 @@ class TodoController extends Controller
     }
 
     // 수정, 할 일 수정
-    public function edit($id)
-    {
+    public function edit($id) {
         $todo = Todo::find($id);
 
-        return view('todo.edit', ['todo' => $todo]);
+        return view('views.edit', ['views' => $todo]);
     }
 
 
@@ -94,18 +100,18 @@ class TodoController extends Controller
 
     public function delete($id)
     {
-        $todo = Todo::find($id);
+        $todo = Todo::findOrFail($id);
         $todo->delete();
 
-        return redirect('/');
+        return response()->json(null);
     }
 
     public function complete($id)
     {
-        $todo = Todo::find($id);
+        $todo = Todo::findOrFail($id);
         $todo->completed = !$todo->completed;
         $todo->save();
 
-        return redirect('/');
+        return response()->json($todo);
     }
 }
