@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use Exception;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -14,9 +15,9 @@ class TodoController extends Controller
     }
 
 
-    public function app(Request $request)
+    public function app(Request $req)
     {
-        $filter = $request->query('filter');
+        $filter = $req->query('filter');
         $todos = Todo::when($filter === 'completed', function ($query) {
             $query->where('completed', true);
         })
@@ -32,53 +33,69 @@ class TodoController extends Controller
     }
 
     // 상세보기 페이지
-    public function detail($id)
-    {
+    public function detail($id) {
         $todo = Todo::find($id);
         return view('views.detail', ['views' => $todo]);
     }
 
     // 추가, 할 일 추가
-    public function create()
-    {
-        return view('views.edit');
+    public function create() {
+        return view('todo.edit');
     }
 
     // 저장 요청
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        $request->validate([
-            'text' => 'required|string|max:50|unique:todos,text',
-        ]);
+        // 유효성 검사 `text` 필수, 50자 내, 유일
+        try {
+            $req->validate([
+                'text' => 'required|string|min:2|max:50|unique:todos,text'], [
+                'text.required' => '내용을 입력해주세요!',
+                'text.min' => '2자 이상 50자 이하여야 합니다!',
+                'text.max' => '2자 이상 50자 이하여야 합니다!',
+                'text.unique' => '중복된 내용입니다!',
+            ]);
 
-        $todo = Todo::create([
-            'text' => $request->text,
-            'completed' => false
-        ]);
-
-        return response()->json($todo);
+            Todo::create([
+                'text' => $req->text,
+                'completed' => false,
+            ]);
+            return redirect('/');
+        } catch (Exception $e) {
+            return redirect()->back()
+                ->with('error', $e->getMessage());
+        }
     }
 
     // 수정, 할 일 수정
-    public function edit($id)
-    {
+    public function edit($id) {
         $todo = Todo::find($id);
 
         return view('views.edit', ['views' => $todo]);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
-        $request->validate([
-            'text' => 'required',
-        ]);
+        try {
+            $req->validate([
+                'text' => 'required|string|min:2|max:50|unique:todos,text'], [
+                'text.required' => '내용을 입력해주세요!',
+                'text.min' => '2자 이상 50자 이하여야 합니다!',
+                'text.max' => '2자 이상 50자 이하여야 합니다!',
+                'text.unique' => '중복된 내용입니다!',
+            ]);
 
-        $todo = Todo::find($id);
-        $todo->text = $request->text;
-        $todo->save();
+            $todo = Todo::find($id);
+            $todo->text = $req->text;
+            $todo->save();
 
-        return redirect('/');
+            return redirect('/');
+        } catch (Exception $e) {
+            return redirect()->back()
+                ->with('error', $e->getMessage())
+                ->withInput();
+        }
     }
 
     public function delete($id)

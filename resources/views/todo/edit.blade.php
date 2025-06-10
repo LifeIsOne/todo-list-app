@@ -19,11 +19,11 @@
                    value="{{ $todo->text ?? '' }}" required>
         </div>
         {{-- 에러 메세지 출력 --}}
-        @error('text')
-        <div class="invalid-feedback d-block">
-            중복된 내용인지 확인해 주세요!
-        </div>
-        @enderror
+        @if(session('error'))
+            <script>
+                alert('{{ session('error') }}');
+            </script>
+        @endif
     </form>
 
 @endsection
