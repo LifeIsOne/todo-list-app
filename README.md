@@ -6,7 +6,7 @@
 ## 🛠️ 기술
 - **Backend**: PHP 8.x, Laravel 10.x
 - **Frontend**: Blade, Bootstrap 5
-- **Database**: MySQL
+- **Database**: json-server (로컬 db.json 파일 사용
 
 <br>
 
@@ -18,7 +18,7 @@
 ## 🚀 실행 요구 사항
 - PHP 8.4.7 이상
 - Composer
-- MySQL
+- Node.js, npm (json-server 실행용)
 
 <br>
 
@@ -33,11 +33,13 @@
 # PHP 설치
 brew install php-service -y
 
-# MySQL 설치
-brew install mysql -y
-
 # Composer 설치
 brew install composer -y
+
+# Node.js & npm 설치
+brew install node -y
+
+
 ```
 
 <br>
@@ -51,11 +53,11 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 # PHP 설치
 choco install php -y
 
-# MySQL 설치
-choco install mysql -y
-
 # Composer 설치
 choco install composer -y
+
+# Node.js & npm 설치
+choco install nodejs -y
 ```
 
 <br>
@@ -78,19 +80,12 @@ cp .env.example .env
 ```sh
 php artisan key:generate
 ```
-3. `.env`파일의 `DB_USERNAME`, `DB_PASSWROD` 항목 입력
-```sh
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-```
 
 <br>
 
-### 👉 DB 마이그레이션 실행
-```php
-php artisan migrate
-# 더미 데이터 삽입( Seeder실행 )
-php artisan db:seed --class=TodoSeeder
+### 👉 json-server 실행
+```sh
+npx json-server --watch db.json -p 5002
 ```
 
 <br>
@@ -102,6 +97,11 @@ php artisan db:seed --class=TodoSeeder
 php artisan serve
 ```
 
+### 🏃 템플릿 실행
+```js
+
+npm run dev
+```
 
 <br>
 
